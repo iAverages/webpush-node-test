@@ -1,4 +1,4 @@
-export const registerServiceWorker = async () => {
+export const registerServiceWorker = () => {
   return navigator.serviceWorker.register("/service.js");
 };
 
