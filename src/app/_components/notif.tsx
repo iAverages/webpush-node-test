@@ -14,6 +14,8 @@ export default function Notifications() {
     window?.Notification?.permission || "default",
   );
 
+  const [a, setA] = useState("");
+
   if (!notificationsSupported()) {
     return <div>Install PWA</div>;
   }
@@ -28,7 +30,8 @@ export default function Notifications() {
     setPermission(receivedPermission);
 
     if (receivedPermission === "granted") {
-      await subscribe();
+      const res = await subscribe();
+      setA(JSON.stringify(res));
       alert("subscribed");
     }
   };
@@ -39,6 +42,7 @@ export default function Notifications() {
       <button onClick={requestPermission}>
         Request permission and subscribe
       </button>
+      {a && <div>{a}</div>}
     </>
   );
 }
@@ -70,7 +74,11 @@ const subscribe = async () => {
     await saveSubscription(subscription);
 
     alert({ subscription });
+
+    return subscription;
   } catch (err) {
-    alert("Error: " + JSON.stringify(err));
+    const error = err as Error;
+    alert("Error: " + JSON.stringify(error.message));
+    return error.message;
   }
 };
