@@ -4,7 +4,13 @@
  */
 await import("./src/env.mjs");
 
+import pwa from "next-pwa";
+
+const withPwa = pwa({
+  dest: "public",
+});
+
 /** @type {import("next").NextConfig} */
 const config = {};
 
-export default config;
+export default withPwa(config);
