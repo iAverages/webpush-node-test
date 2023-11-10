@@ -1,5 +1,5 @@
 export const registerServiceWorker = () => {
-  return navigator.serviceWorker.register("/service.js");
+  return navigator.serviceWorker.register("/sw.js");
 };
 
 export const unregisterServiceWorkers = async () => {
