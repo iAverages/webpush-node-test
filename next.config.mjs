@@ -13,4 +13,5 @@ const withPwa = pwa({
 /** @type {import("next").NextConfig} */
 const config = {};
 
+// @ts-expect-error - shut up
 export default withPwa(config);
