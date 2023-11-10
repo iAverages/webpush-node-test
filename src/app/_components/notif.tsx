@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { resetServiceWorker } from "~/utilts/sw";
+import { registerServiceWorker, resetServiceWorker } from "~/utilts/sw";
 import { CONFIG } from "~/config";
 
 const notificationsSupported = () =>
   "Notification" in window &&
   "serviceWorker" in navigator &&
   "PushManager" in window;
+
+void registerServiceWorker();
 
 export default function Notifications() {
   const [permission, setPermission] = useState(

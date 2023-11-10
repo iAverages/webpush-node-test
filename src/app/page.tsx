@@ -1,11 +1,8 @@
 import dynamic from "next/dynamic";
-import { registerServiceWorker } from "~/utilts/sw";
 
 const Notifications = dynamic(() => import("~/app/_components/notif"), {
   ssr: false, // Make sure to render component client side to access window and Notification API's
 });
-
-void registerServiceWorker();
 
 export default function Home() {
   return (
