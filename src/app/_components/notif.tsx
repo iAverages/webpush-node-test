@@ -20,7 +20,7 @@ export default function Notifications() {
 
   const requestPermission = async () => {
     if (!notificationsSupported()) {
-      console.log("not inside pwa/notifications not supported");
+      alert("not inside pwa/notifications not supported");
       return;
     }
 
@@ -28,7 +28,8 @@ export default function Notifications() {
     setPermission(receivedPermission);
 
     if (receivedPermission === "granted") {
-      void subscribe();
+      await subscribe();
+      alert("subscribed");
     }
   };
 
