@@ -69,8 +69,8 @@ const subscribe = async () => {
 
     await saveSubscription(subscription);
 
-    console.log({ subscription });
+    alert({ subscription });
   } catch (err) {
-    console.error("Error", err);
+    alert("Error: " + JSON.stringify(err));
   }
 };
